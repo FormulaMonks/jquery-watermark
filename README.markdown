@@ -17,6 +17,6 @@ Now in you Javascript file:
 
 And if you want to make it look prettier:
 
-  input.watermark { color: #888; }
+    input.watermark { color: #888; }
 
 Or, clone the repo and try the example.

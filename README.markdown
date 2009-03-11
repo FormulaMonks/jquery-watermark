@@ -17,7 +17,7 @@ The only thing you need to add to you form is a `title` attribute:
       <input type="text" title="Type to search" />
     </form>
 
-Now in you Javascript file:
+Now in your JavaScript file:
 
     $(document).ready(function() {
       $("#search").watermark();

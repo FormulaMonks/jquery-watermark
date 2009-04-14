@@ -29,7 +29,7 @@ $.widget("ui.watermark", {
   },
 
   handlerOn: function() {
-    if (this.value == '' && this.title && this.title != '') {
+    if (this.title && this.title != '' && (this.value == '' || this.value == this.title)) {
       $(this).addClass("watermark");
       this.value = this.title;
     }

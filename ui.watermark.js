@@ -6,7 +6,7 @@
 */
 
 $.widget("ui.watermark", {
-  init: function() {
+  _init: function() {
     var watermark = this;
 
     var form = this.element;

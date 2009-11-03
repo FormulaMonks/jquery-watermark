@@ -11,7 +11,7 @@ $.widget("ui.watermark", {
 
     var form = this.element;
 
-    this.elements = $("input:text, textarea", form);
+    this.elements = $("input:text, input:password, textarea", form);
 
     this.elements.focus(this.handlerOff);
     this.elements.blur(this.handlerOn);
@@ -32,6 +32,10 @@ $.widget("ui.watermark", {
     if (this.title && this.title != '' && (this.value == '' || this.value == this.title)) {
       $(this).addClass("watermark");
       this.value = this.title;
+      if(this.type = "password") {
+        this.isPassword = true;
+        this.type = "text";
+      }
     }
 
     return true;
@@ -42,6 +46,9 @@ $.widget("ui.watermark", {
       if (this.value == this.title && this.title && this.title != '') {
         this.value = '';
         $(this).removeClass("watermark");
+        if(this.isPassword) {
+          this.type = "password";
+        }
       }
     }
 

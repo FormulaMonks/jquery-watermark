@@ -32,7 +32,7 @@ $.widget("ui.watermark", {
     if (this.title && this.title != '' && (this.value == '' || this.value == this.title)) {
       $(this).addClass("watermark");
       this.value = this.title;
-      if(this.type = "password") {
+      if(this.type == "password") {
         this.isPassword = true;
         this.type = "text";
       }

@@ -7,6 +7,8 @@
 
 $.widget("ui.watermark", {
   _init: function() {
+    if ($.ui.watermark.nativePlaceholderSupported) return this.element
+
     var watermark = this;
 
     var form = this.element;
@@ -29,6 +31,8 @@ $.widget("ui.watermark", {
       watermark.elements.each(watermark.handlerOff);
       return true;
     });
+
+    return this.element
   },
 
   refresh: function() {
@@ -36,9 +40,11 @@ $.widget("ui.watermark", {
   },
 
   handlerOn: function() {
-    if (this.title && this.title != '' && (this.value == '' || this.value == this.title)) {
+    var placeholder = this.getAttribute("placeholder")
+
+    if (placeholder && placeholder != '' && (this.value == '' || this.value == placeholder)) {
       $(this).addClass("watermark");
-      this.value = this.title;
+      this.value = placeholder;
       if(this.type == "password") {
         this.isPassword = true;
         this.type = "text";
@@ -49,8 +55,10 @@ $.widget("ui.watermark", {
   },
 
   handlerOff: function() {
+    var placeholder = this.getAttribute("placeholder")
+
     if (this.type == 'text' || this.type == 'textarea') {
-      if (this.value == this.title && this.title && this.title != '') {
+      if (this.value == placeholder && placeholder && placeholder != '') {
         this.value = this.defaultValue || '';
         $(this).removeClass("watermark");
         if(this.isPassword) {
@@ -61,4 +69,8 @@ $.widget("ui.watermark", {
 
     return true;
   }
+});
+
+$.extend($.ui.watermark, {
+  nativePlaceholderSupported: ("placeholder" in document.createElement("input"))
 });

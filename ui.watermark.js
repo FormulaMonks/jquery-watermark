@@ -32,6 +32,10 @@ $.widget("ui.watermark", {
       return true;
     });
 
+    window.onbeforeunload = function() {
+      watermark.elements().each(watermark.handlerOff);
+    }
+
     return this.element
   },
 

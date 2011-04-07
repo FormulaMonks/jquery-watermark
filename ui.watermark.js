@@ -7,7 +7,7 @@
 
 $.widget("ui.watermark", {
   _init: function() {
-    if ($.ui.watermark.nativePlaceholderSupported) return this.element
+    if ($.ui.watermark.nativePlaceholderSupported) return this.element;
 
     var watermark = this;
 
@@ -33,10 +33,10 @@ $.widget("ui.watermark", {
     });
 
     window.onbeforeunload = function() {
-      watermark.elements().each(watermark.handlerOff);
+      watermark.elements.each(watermark.handlerOff);
     }
 
-    return this.element
+    return this.element;
   },
 
   refresh: function() {
@@ -44,7 +44,7 @@ $.widget("ui.watermark", {
   },
 
   handlerOn: function() {
-    var placeholder = this.getAttribute("placeholder")
+    var placeholder = this.getAttribute("placeholder");
 
     if (placeholder && placeholder != '' && (this.value == '' || this.value == placeholder)) {
       $(this).addClass("watermark");
@@ -59,7 +59,7 @@ $.widget("ui.watermark", {
   },
 
   handlerOff: function() {
-    var placeholder = this.getAttribute("placeholder")
+    var placeholder = this.getAttribute("placeholder");
 
     if (this.type == 'text' || this.type == 'textarea') {
       if (this.value == placeholder && placeholder && placeholder != '') {

@@ -19,7 +19,9 @@ $.widget("ui.watermark", {
 
     this.elements.each(function() {
       this.ignoreDefaultValue = ignoreDefaultValue;
-      this.defaultValue = this.value;
+      if (!$(this).hasClass("watermark")) {
+        this.defaultValue = this.value;
+      }
     });
 
     this.elements.focus(this.handlerOff);
